@@ -2032,7 +2032,6 @@ The return value is the yanked text."
   ;; evil-visual-paste is typically called from evil-paste-before or
   ;; evil-paste-after, but we have to mark that the paste was from
   ;; visual state
-  (setq dov-testing "123")
   (setq this-command 'evil-visual-paste)
   (let* ((text (if register
                    (evil-get-register register)
@@ -2052,8 +2051,8 @@ The return value is the yanked text."
           (when (and (= evil-visual-end (point-max))
                      (/= (char-before (point-max)) ?\n))
             (setq paste-eob t))
-          (evil-delete evil-visual-beginning evil-visual-end
-                       (evil-visual-type) ?_)
+;          (evil-delete evil-visual-beginning evil-visual-end
+;                       (evil-visual-type) ?_)
           (when (and (eq yank-handler #'evil-yank-line-handler)
                      (not (eq (evil-visual-type) 'line))
                      (not (= evil-visual-end (point-max))))
